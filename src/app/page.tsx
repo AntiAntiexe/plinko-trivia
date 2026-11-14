@@ -4,14 +4,14 @@ import { HowToPlay } from "@/components/home/HowToPlay";
 
 export default function Home() {
   return (
-    <main className="min-h-full bg-slate-50 px-5 py-5 sm:px-8 sm:py-8">
+    <main className="pixel-shell min-h-full px-4 py-4 sm:px-8 sm:py-8">
       <div className="mx-auto max-w-6xl">
-        <header className="mb-5 flex items-center justify-between px-1">
-          <p className="text-lg font-black tracking-tight text-slate-950">
-            PLINKO<span className="text-cyan-600">/</span>TRIVIA
+        <header className="pixel-header mb-5 flex items-center justify-between px-3 py-2">
+          <p className="pixel-brand text-lg font-black tracking-[0.18em] text-white">
+            PLINKO<span className="text-pink-400">★</span>TRIVIA
           </p>
-          <p className="hidden text-sm font-medium text-slate-500 sm:block">
-            A new way to play what you know
+          <p className="hidden text-xs font-bold uppercase tracking-[0.2em] text-cyan-300 sm:block">
+            The house of hard questions
           </p>
         </header>
         <Hero />
