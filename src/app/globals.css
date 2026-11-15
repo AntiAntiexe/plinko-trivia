@@ -112,3 +112,17 @@ body {
   border-radius: 0;
   font-family: inherit;
 }
+
+.plinko-stage {
+  background:
+    radial-gradient(circle at 50% 12%, rgba(28, 201, 232, 0.14), transparent 34%),
+    #020914;
+  border: 3px solid #1cc9e8;
+}
+
+.plinko-ball {
+  box-shadow: 3px 3px 0 rgba(2, 9, 20, 0.9), 0 0 14px #67e8f9;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  z-index: 3;
+}

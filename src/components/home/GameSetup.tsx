@@ -1,4 +1,19 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export function GameSetup() {
+  const router = useRouter();
+
+  function startGame(formData: FormData) {
+    const params = new URLSearchParams({
+      category: String(formData.get("category")),
+      questions: String(formData.get("questions")),
+      balls: String(formData.get("balls")),
+    });
+    router.push(`/play?${params.toString()}`);
+  }
+
   return (
     <section
       className="pixel-card p-6 sm:p-8"
@@ -16,10 +31,10 @@ export function GameSetup() {
         </p>
       </div>
 
-      <form className="grid gap-5 sm:grid-cols-3">
+      <form action={startGame} className="grid gap-5 sm:grid-cols-3">
         <label className="grid gap-2 text-sm font-bold uppercase tracking-wider text-yellow-300">
           Category
-          <select className="pixel-select h-12 border border-cyan-500/50 bg-slate-950 px-4 font-normal text-white outline-none transition focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/20">
+          <select className="pixel-select h-12 border border-cyan-500/50 bg-slate-950 px-4 font-normal text-white outline-none transition focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/20" name="category">
             <option>General knowledge</option>
             <option>Science</option>
             <option>History</option>
@@ -28,30 +43,30 @@ export function GameSetup() {
         </label>
         <label className="grid gap-2 text-sm font-bold uppercase tracking-wider text-yellow-300">
           Questions
-          <select className="pixel-select h-12 border border-cyan-500/50 bg-slate-950 px-4 font-normal text-white outline-none transition focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/20">
-            <option>10 questions</option>
-            <option>15 questions</option>
-            <option>20 questions</option>
+          <select className="pixel-select h-12 border border-cyan-500/50 bg-slate-950 px-4 font-normal text-white outline-none transition focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/20" name="questions">
+            <option value="10">10 questions</option>
+            <option value="15">15 questions</option>
+            <option value="20">20 questions</option>
           </select>
         </label>
         <label className="grid gap-2 text-sm font-bold uppercase tracking-wider text-yellow-300">
           Plinko balls
-          <select className="pixel-select h-12 border border-cyan-500/50 bg-slate-950 px-4 font-normal text-white outline-none transition focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/20">
-            <option>3 balls</option>
-            <option>5 balls</option>
-            <option>7 balls</option>
+          <select className="pixel-select h-12 border border-cyan-500/50 bg-slate-950 px-4 font-normal text-white outline-none transition focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/20" name="balls">
+            <option value="3">3 balls</option>
+            <option value="5">5 balls</option>
+            <option value="7">7 balls</option>
           </select>
         </label>
-      </form>
 
-      <button
-        className="pixel-button mt-8 w-full bg-pink-500 px-6 py-4 font-bold uppercase text-white transition hover:bg-pink-400 focus:outline-none focus:ring-4 focus:ring-pink-400/30"
-        type="button"
-      >
-        Deal me in
-      </button>
+        <button
+          className="pixel-button mt-8 w-full bg-pink-500 px-6 py-4 font-bold uppercase text-white transition hover:bg-pink-400 focus:outline-none focus:ring-4 focus:ring-pink-400/30 sm:col-span-3"
+          type="submit"
+        >
+          Deal me in
+        </button>
+      </form>
       <p className="mt-3 text-center text-xs uppercase tracking-wider text-cyan-100/50">
-        Gameplay is coming next · No ante required
+        Selected questions · No ante required
       </p>
     </section>
   );
